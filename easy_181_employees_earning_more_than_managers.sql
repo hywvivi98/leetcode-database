@@ -1,6 +1,7 @@
 '''
-Table: Employee
+link: https://leetcode.com/problems/employees-earning-more-than-their-managers/
 
+Table: Employee
 +-------------+---------+
 | Column Name | Type    |
 +-------------+---------+
@@ -19,6 +20,7 @@ Return the result table in any order.
 
 The query result format is in the following example.
 '''
+-- inner join with the same table, filter with joining key
 SELECT
      a.NAME AS Employee
 FROM Employee AS a INNER JOIN Employee AS b

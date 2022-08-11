@@ -1,6 +1,7 @@
 '''
-Table: Signups
+link: https://leetcode.com/problems/confirmation-rate/
 
+Table: Signups
 +----------------+----------+
 | Column Name    | Type     |
 +----------------+----------+
@@ -51,7 +52,7 @@ UNION
 SELECT user_id,0.00 FROM Signups
 WHERE user_id NOT IN (SELECT user_id FROM CTE )
 
---Method2: GROUPBY within CTE
+--Method2: GROUPBY within CTE, consider null values with IFNULL() function
 WITH CTE AS(
     SELECT 
         user_id,

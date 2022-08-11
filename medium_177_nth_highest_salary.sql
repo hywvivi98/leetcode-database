@@ -1,6 +1,7 @@
 '''
-Table: Employee
+link: https://leetcode.com/problems/nth-highest-salary/
 
+Table: Employee
 +-------------+------+
 | Column Name | Type |
 +-------------+------+
@@ -15,6 +16,8 @@ Write an SQL query to report the nth highest salary from the Employee table. If 
 
 The query result format is in the following example.
 '''
+-- hint: declare and set variable within SQL
+-- helpful resource: https://towardsdatascience.com/declaring-variables-within-sql-fe6a479a7f9c
 CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
 BEGIN
 DECLARE M INT;
