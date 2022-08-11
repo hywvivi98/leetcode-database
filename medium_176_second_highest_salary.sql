@@ -43,3 +43,4 @@ limit 1 offset 1
 )
 select salary SecondHighestSalary from cte 
 '''
+
