@@ -38,3 +38,10 @@ HAVING SUM(b.product_name="A") >0
     AND SUM(b.product_name="B") > 0 
     AND SUM(b.product_name="C")=0
 
+-- Method 2: simple where selection 
+select distinct o.customer_id, c.customer_name
+from orders as o left join customers as c
+  on o.customer_id = c.customer_id
+where (o.customer_id, 'A') in (select customer_id, product_name from orders)
+  and (o.customer_id, 'B') in (select customer_id, product_name from orders)
+  and (o.customer_id, 'C') not in (select customer_id, product_name from orders)
