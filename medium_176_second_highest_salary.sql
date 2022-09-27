@@ -34,13 +34,26 @@ SELECT
         LIMIT 1 OFFSET 1),
     NULL) AS SecondHighestSalary
 
-'''
-Q: how to get the right answer when cte returns nothing?
-with cte as (
-select distinct salary from Employee
-order by salary desc
-limit 1 offset 1
-)
-select salary SecondHighestSalary from cte 
-'''
+
+-- Method3: cte with limit offset 
+-- Q: how to get the right answer when cte returns nothing?
+WITH CTE AS (
+SELECT DISTINCT salary
+FROM Employee
+ORDER BY salary DESC
+LIMIT 1 OFFSET 1)
+
+SELECT MAX(salary) AS SecondHighestSalary
+FROM CTE
+
+
+-- Method4: use aggregrate function to convert empty answer to null
+WITH CTE AS (
+SELECT salary
+    , RANK() OVER (ORDER BY salary DESC) AS SALARYRANK
+FROM Employee)
+
+SELECT MAX(salary) AS SecondHighestSalary
+FROM CTE
+WHERE SALARYRANK=2
 
