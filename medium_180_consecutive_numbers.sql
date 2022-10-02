@@ -36,3 +36,12 @@ select distinct num as ConsecutiveNums from
 (select num, id - row_number() over (order by num, id) rank from logs) a
 group by num,rank
 having count(*) >2
+
+-- Method3: direct join
+SELECT DISTINCT A.num AS ConsecutiveNums
+FROM Logs A
+JOIN Logs B
+ON  B.id-1 = A.id
+JOIN Logs C
+ON C.id-2 = A.id
+WHERE A.num = B.num AND A.num = C.num AND B.num = C.num
